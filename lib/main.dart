@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tcc_girls_in_ctrl/view/login/principal.login.dart';
+import 'package:tcc_girls_in_ctrl/view/login/option.login.dart';
+import 'package:tcc_girls_in_ctrl/view/splash/splashScreem.splash.dart';
 import 'package:tcc_girls_in_ctrl/view/themes/light.theme.dart';
 
 void main() {
@@ -7,7 +8,7 @@ void main() {
     MaterialApp(
       title: "Hello",
       debugShowCheckedModeBanner: false,
-      home: const MyApp(),
+      home: const SplashScreen(myApp: OptionScreem()),
       theme: lightTheme,
     ),
   );

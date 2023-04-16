@@ -9,12 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:tcc_girls_in_ctrl/main.dart';
-import 'package:tcc_girls_in_ctrl/view/login/principal.login.dart';
+import 'package:tcc_girls_in_ctrl/view/login/option.login.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(OptionScreem());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
