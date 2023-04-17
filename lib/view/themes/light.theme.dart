@@ -22,4 +22,21 @@ final lightTheme = ThemeData(
   ).copyWith(
     secondary: const Color(0xfff5f5f5),
   ),
+  textTheme: const TextTheme(
+      headline1: TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.w500,
+      ),
+      bodyText1: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w300,
+      ),
+      bodyText2: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w300,
+      ),
+      headline2: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w500,
+      )),
 );

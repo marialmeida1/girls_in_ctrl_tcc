@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:tcc_girls_in_ctrl/view/bottons/botton.bottons.dart';
 
 class OptionScreem extends StatelessWidget {
   const OptionScreem({super.key});
@@ -8,11 +9,13 @@ class OptionScreem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          LogoTop(),
-          Option(context),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            LogoTop(),
+            Option(context),
+          ],
+        ),
       ),
     );
   }
@@ -32,6 +35,7 @@ Widget LogoTop() {
 
 Widget Option(BuildContext context) {
   return Container(
+    height: 600,
     decoration: BoxDecoration(
       color: Color(0xffa17bff),
       borderRadius: const BorderRadius.only(
@@ -56,19 +60,58 @@ Widget Option(BuildContext context) {
       ),
       child: Column(
         children: [
-          Text(
-            "Bem vinda",
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.secondary,
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Bem vinda!",
+              style: Theme.of(context).textTheme.headline1?.copyWith(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+              textAlign: TextAlign.left,
             ),
           ),
           const SizedBox(
-            height: 40,
+            height: 20,
           ),
-          const Text(
-              "Dolore cillum et elit culpa id velit exercitation magna et cillum dolore."),
+          Text(
+            "Dolore cillum et elit culpa id velit exercitation magna et cillum dolore.Aliquip aute mollit sunt esse magna elit."
+            "Reprehenderit do anim ullamco pariatur anim amet eu nostrud.",
+            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+            textAlign: TextAlign.justify,
+          ),
           const SizedBox(
             height: 40,
+          ),
+          Bottons(context),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget Bottons(BuildContext context) {
+  return Container(
+    width: double.infinity,
+    color: Colors.red,
+    child: Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          bottonPadrao(
+            50,
+            null,
+            Colors.white,
+            "Entrar",
+            context,
+          ),
+          bottonPadrao(
+            50,
+            null,
+            Colors.black,
+            "Cadastrar",
+            context,
           )
         ],
       ),
