@@ -82,7 +82,7 @@ Widget Option(BuildContext context) {
             textAlign: TextAlign.justify,
           ),
           const SizedBox(
-            height: 40,
+            height: 60,
           ),
           Bottons(context),
         ],
@@ -94,27 +94,40 @@ Widget Option(BuildContext context) {
 Widget Bottons(BuildContext context) {
   return Container(
     width: double.infinity,
-    color: Colors.red,
-    child: Expanded(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          bottonPadrao(
-            50,
-            null,
-            Colors.white,
-            "Entrar",
-            context,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              right: 5,
+            ),
+            child: bottonPadrao(
+              50,
+              null,
+              Colors.white,
+              Colors.black,
+              "Entrar",
+              context,
+            ),
           ),
-          bottonPadrao(
-            50,
-            null,
-            Colors.black,
-            "Cadastrar",
-            context,
-          )
-        ],
-      ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 5,
+            ),
+            child: bottonPadrao(
+              50,
+              null,
+              Colors.black,
+              Colors.white,
+              "Cadastrar",
+              context,
+            ),
+          ),
+        )
+      ],
     ),
   );
 }
