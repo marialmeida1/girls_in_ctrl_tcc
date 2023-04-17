@@ -25,7 +25,7 @@ final lightTheme = ThemeData(
   textTheme: const TextTheme(
       headline1: TextStyle(
         fontSize: 32,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w700,
       ),
       bodyText1: TextStyle(
         fontSize: 24,
