@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:tcc_girls_in_ctrl/view/bottons/botton.bottons.dart';
+import 'package:tcc_girls_in_ctrl/view/login/entrar.login.dart';
+import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 
 class OptionScreem extends StatelessWidget {
   const OptionScreem({super.key});
@@ -35,7 +36,7 @@ Widget LogoTop() {
 
 Widget Option(BuildContext context) {
   return Container(
-    height: 600,
+    height: MediaQuery.of(context).size.height * 0.6,
     decoration: BoxDecoration(
       color: Color(0xffa17bff),
       borderRadius: const BorderRadius.only(
@@ -109,6 +110,7 @@ Widget Bottons(BuildContext context) {
               Colors.black,
               "Entrar",
               context,
+              TelaEntrar(),
             ),
           ),
         ),
@@ -124,6 +126,7 @@ Widget Bottons(BuildContext context) {
               Colors.white,
               "Cadastrar",
               context,
+              TelaEntrar(),
             ),
           ),
         )

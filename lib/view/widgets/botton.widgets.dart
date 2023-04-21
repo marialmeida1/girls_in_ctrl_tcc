@@ -7,6 +7,7 @@ Widget bottonPadrao(
   Color colorBotton,
   String texto,
   BuildContext context,
+  Widget? pagina,
 ) {
   return Container(
     alignment: Alignment.center,
@@ -21,7 +22,14 @@ Widget bottonPadrao(
         backgroundColor: color,
         elevation: 0,
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => pagina ?? const SizedBox(),
+          ),
+        );
+      },
       child: Text(
         texto,
         style: Theme.of(context).textTheme.headline2?.copyWith(

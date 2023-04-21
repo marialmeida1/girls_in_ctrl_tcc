@@ -17,7 +17,8 @@ class SplashScreen extends StatelessWidget {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('lib/assets/fundoSplash.jpg'),
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.contain,
+                  alignment: Alignment.center,
                 ),
               ),
               child: Center(
