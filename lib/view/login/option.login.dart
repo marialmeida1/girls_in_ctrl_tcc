@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:tcc_girls_in_ctrl/view/login/cadastrar.login.dart';
 import 'package:tcc_girls_in_ctrl/view/login/entrar.login.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 
@@ -75,8 +76,7 @@ Widget Option(BuildContext context) {
             height: 20,
           ),
           Text(
-            "Dolore cillum et elit culpa id velit exercitation magna et cillum dolore.Aliquip aute mollit sunt esse magna elit."
-            "Reprehenderit do anim ullamco pariatur anim amet eu nostrud.",
+            "Seja bem-vinda ao app do Girls in Crtl! Para que consiga ter uma boa experiência no nosso aplicativo peço que entre ou realize o cadastro! Aproveite a experiência!",
             style: Theme.of(context).textTheme.bodyText2?.copyWith(
                   color: Theme.of(context).colorScheme.secondary,
                 ),
@@ -110,7 +110,7 @@ Widget Bottons(BuildContext context) {
               Colors.black,
               "Entrar",
               context,
-              TelaEntrar(),
+              const TelaEntrar(),
             ),
           ),
         ),
@@ -126,7 +126,7 @@ Widget Bottons(BuildContext context) {
               Colors.white,
               "Cadastrar",
               context,
-              TelaEntrar(),
+              const TelaCadastrar(),
             ),
           ),
         )

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tcc_girls_in_ctrl/view/login/cadastrar.login.dart';
+import 'package:tcc_girls_in_ctrl/view/login/entrar.login.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/textBox.widgets.dart';
 
-class TelaEntrar extends StatelessWidget {
-  const TelaEntrar({super.key});
+class TelaCadastrar extends StatelessWidget {
+  const TelaCadastrar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class TelaEntrar extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: InkWell(
             child: Text(
-              'Cadastrar',
+              'Entrar',
               style: Theme.of(context).textTheme.bodyText2?.copyWith(
                     color: Colors.black,
                     decoration: TextDecoration.underline,
@@ -33,7 +33,7 @@ class TelaEntrar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => TelaCadastrar()),
+                MaterialPageRoute(builder: (context) => TelaEntrar()),
               );
             },
           ),
@@ -56,7 +56,7 @@ class TelaEntrar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Entrar",
+                    "Cadastrar",
                     style: Theme.of(context).textTheme.headline1?.copyWith(
                           color: Colors.black,
                         ),
@@ -96,36 +96,31 @@ class TelaEntrar extends StatelessWidget {
                       const SizedBox(
                         height: 40,
                       ),
+                      textBox("Nome Completo"),
+                      const SizedBox(
+                        height: 26,
+                      ),
                       textBox("Email"),
                       const SizedBox(
                         height: 26,
                       ),
                       textBox("Senha"),
                       const SizedBox(
+                        height: 26,
+                      ),
+                      textBox("Confirmar Senha"),
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        height: 20,
-                        width: double.infinity,
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          "Esqueceu sua senha?",
-                          style:
-                              Theme.of(context).textTheme.bodyText2?.copyWith(
-                                    color: Colors.black,
-                                    decoration: TextDecoration.underline,
-                                  ),
-                        ),
-                      ),
                       const SizedBox(
-                        height: 30,
+                        height: 50,
                       ),
                       bottonPadrao(
                         50,
                         double.infinity,
                         Colors.black,
                         Colors.white,
-                        "Entrar",
+                        "Cadastrar",
                         context,
                         null,
                       ),
