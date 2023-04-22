@@ -8,6 +8,30 @@ class TelaEntrar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        elevation: 0,
+        toolbarHeight: 60,
+        title: Container(
+          width: double.infinity,
+          alignment: Alignment.centerRight,
+          child: InkWell(
+            child: Text(
+              'Cadastrar',
+              style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                    color: Colors.black,
+                  ),
+            ),
+            onTap: () {},
+          ),
+        ),
+      ),
       body: Container(
         color: Theme.of(context).colorScheme.primary,
         alignment: Alignment.topCenter,
@@ -17,31 +41,27 @@ class TelaEntrar extends StatelessWidget {
               padding: const EdgeInsets.only(
                 left: 30,
                 right: 30,
-                top: 80,
+                top: 30,
               ),
-              height: 200,
+              height: 150,
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     "Entrar",
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
+                    style: Theme.of(context).textTheme.headline1?.copyWith(
+                          color: Colors.black,
+                        ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 14,
                   ),
                   Text(
-                    "Enim dolore id officia est reprehenderit culpa. Ut aliquip enim ullamco proident ipsum.",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                    ),
+                    "Olá Girl, que bom ter você aqui!",
+                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                          color: Colors.black,
+                        ),
                   ),
                 ],
               ),
@@ -51,8 +71,7 @@ class TelaEntrar extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(50),
                   ),
                   boxShadow: [
                     BoxShadow(
@@ -67,6 +86,9 @@ class TelaEntrar extends StatelessWidget {
                   padding: const EdgeInsets.all(40),
                   child: Column(
                     children: [
+                      const SizedBox(
+                        height: 40,
+                      ),
                       textBox("Email"),
                       const SizedBox(
                         height: 26,
@@ -81,9 +103,10 @@ class TelaEntrar extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: Text(
                           "Forget your Password?",
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyText2?.copyWith(
+                                    color: Colors.black,
+                                  ),
                         ),
                       ),
                       const SizedBox(
@@ -92,7 +115,7 @@ class TelaEntrar extends StatelessWidget {
                       bottonPadrao(
                         50,
                         double.infinity,
-                        Theme.of(context).colorScheme.primary,
+                        Colors.black,
                         Colors.white,
                         "Entrar",
                         context,

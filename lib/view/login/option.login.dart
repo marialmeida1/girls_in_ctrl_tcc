@@ -40,8 +40,8 @@ Widget Option(BuildContext context) {
     decoration: BoxDecoration(
       color: Color(0xffa17bff),
       borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(30),
-        topRight: Radius.circular(30),
+        topLeft: Radius.circular(50),
+        topRight: Radius.circular(50),
       ),
       boxShadow: [
         BoxShadow(
