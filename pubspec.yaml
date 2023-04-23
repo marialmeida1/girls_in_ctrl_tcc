@@ -70,6 +70,7 @@ flutter:
     - lib/assets/carrossel1.jpg
     - lib/assets/carrossel2.jpg
     - lib/assets/carrossel3.jpg
+    - lib/assets/fundo.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
