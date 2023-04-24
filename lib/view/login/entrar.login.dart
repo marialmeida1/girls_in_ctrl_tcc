@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tcc_girls_in_ctrl/view/login/cadastrar.login.dart';
 import 'package:tcc_girls_in_ctrl/view/home/principal.home.dart';
+import 'package:tcc_girls_in_ctrl/view/menus/principal.menu.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/textBox.widgets.dart';
 
@@ -128,7 +129,7 @@ class TelaEntrar extends StatelessWidget {
                         Colors.white,
                         "Entrar",
                         context,
-                        Principal(),
+                        PrincipalMenu(),
                       ),
                     ],
                   ),
