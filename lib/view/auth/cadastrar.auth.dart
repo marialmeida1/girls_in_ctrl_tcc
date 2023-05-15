@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tcc_girls_in_ctrl/view/login/entrar.login.dart';
+import 'package:tcc_girls_in_ctrl/view/auth/entrar.auth.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/textBox.widgets.dart';
 

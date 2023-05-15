@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tcc_girls_in_ctrl/view/home/carrossel.home.dart';
-import 'package:tcc_girls_in_ctrl/view/home/info.home.dart';
+import 'package:tcc_girls_in_ctrl/view/principal/home/carrossel.home.dart';
+import 'package:tcc_girls_in_ctrl/view/principal/home/info.home.dart';
 
 class Principal extends StatefulWidget {
   @override

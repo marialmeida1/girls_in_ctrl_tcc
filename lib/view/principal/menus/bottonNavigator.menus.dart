@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tcc_girls_in_ctrl/view/home/principal.home.dart';
-import 'package:tcc_girls_in_ctrl/view/sobre/info.sobre.dart';
+import 'package:tcc_girls_in_ctrl/view/principal/home/principal.home.dart';
 
 class NavigationBarApp extends StatefulWidget {
   @override
@@ -12,7 +11,6 @@ class _NavigationBarState extends State<NavigationBarApp> {
 
   final List<Widget> _pages = [
     Principal(),
-    Sobre(),
   ];
 
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:tcc_girls_in_ctrl/view/login/cadastrar.login.dart';
-import 'package:tcc_girls_in_ctrl/view/login/entrar.login.dart';
+import 'package:tcc_girls_in_ctrl/view/auth/cadastrar.auth.dart';
+import 'package:tcc_girls_in_ctrl/view/auth/entrar.auth.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 
 class OptionScreem extends StatelessWidget {

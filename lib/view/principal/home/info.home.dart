@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tcc_girls_in_ctrl/view/home/listaInfo.home.dart';
+import 'package:tcc_girls_in_ctrl/view/principal/home/listaInfo.home.dart';
 
 Widget infoHome(context, titulo, subtitulo) {
   return Container(

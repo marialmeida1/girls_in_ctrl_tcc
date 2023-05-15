@@ -7,9 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:tcc_girls_in_ctrl/main.dart';
-import 'package:tcc_girls_in_ctrl/view/login/option.login.dart';
+import 'package:tcc_girls_in_ctrl/view/auth/option.auth.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
