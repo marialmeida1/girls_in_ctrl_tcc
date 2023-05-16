@@ -14,6 +14,7 @@ class SplashScreen extends StatelessWidget {
           return Scaffold(
             backgroundColor: Colors.white,
             body: Container(
+              margin: EdgeInsets.all(0),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('lib/assets/fundoSplash.jpg'),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tcc_girls_in_ctrl/view/auth/cadastrar.auth.dart';
-import 'package:tcc_girls_in_ctrl/view/principal/menus/principal.menu.dart';
+import 'package:tcc_girls_in_ctrl/view/main/menu/principal.menu.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
-import 'package:tcc_girls_in_ctrl/view/widgets/textBox.widgets.dart';
+import 'package:tcc_girls_in_ctrl/view/widgets/text.widgets.dart';
 
 class TelaEntrar extends StatelessWidget {
   const TelaEntrar({super.key});

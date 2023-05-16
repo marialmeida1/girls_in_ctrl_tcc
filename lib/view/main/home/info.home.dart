@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tcc_girls_in_ctrl/view/principal/home/listaInfo.home.dart';
+import 'package:tcc_girls_in_ctrl/view/main/home/listaInfo.home.dart';
 
-Widget infoHome(context, titulo, subtitulo) {
+Widget infoHome(context, titulo, subtitulo, Color? color) {
   return Container(
+    color: color,
     height: 200,
     width: double.infinity,
     padding: const EdgeInsets.only(
@@ -11,6 +12,9 @@ Widget infoHome(context, titulo, subtitulo) {
     child: Column(
       children: [
         Container(
+          margin: EdgeInsets.only(
+            top: 10,
+          ),
           alignment: Alignment.centerLeft,
           height: 50,
           width: double.infinity,

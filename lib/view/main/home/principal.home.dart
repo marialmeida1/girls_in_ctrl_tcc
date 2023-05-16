@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tcc_girls_in_ctrl/view/principal/home/carrossel.home.dart';
-import 'package:tcc_girls_in_ctrl/view/principal/home/info.home.dart';
+import 'package:tcc_girls_in_ctrl/view/main/home/carrossel.home.dart';
+import 'package:tcc_girls_in_ctrl/view/main/home/info.home.dart';
+import 'package:tcc_girls_in_ctrl/view/main/menu/appBar.menu.dart';
 
 class Principal extends StatefulWidget {
   @override
@@ -13,9 +14,11 @@ class _PrincipalState extends State<Principal> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      appBar: myappBar(
+        context,
+        Colors.white,
+        null,
+        null,
       ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -30,16 +33,25 @@ class _PrincipalState extends State<Principal> {
                 context,
                 "Siga nosso Instagram",
                 "Veja informações sobre a tecnologia!",
+                null,
               ),
               infoHome(
                 context,
                 "Siga nosso Linkedin",
                 "Veja novas vagas de emprego e projeto!",
+                Color.fromARGB(14, 0, 0, 0),
               ),
               infoHome(
                 context,
                 "Vagas",
                 "Ofertas de vagas na TI!",
+                null,
+              ),
+              infoHome(
+                context,
+                "Vagas",
+                "Ofertas de vagas na TI!",
+                Color.fromARGB(14, 0, 0, 0),
               ),
             ],
           ),
