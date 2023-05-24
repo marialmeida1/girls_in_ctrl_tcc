@@ -72,9 +72,24 @@ class _TelaEntrarState extends State<TelaEntrar> {
     }
   }
 
+  Widget buildPasswordSuffixIcon(bool obscureText) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          obscureText = !obscureText;
+        });
+      },
+      child: Icon(
+        obscureText ? Icons.visibility_off : Icons.visibility,
+        color: Colors.grey,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
@@ -162,22 +177,31 @@ class _TelaEntrarState extends State<TelaEntrar> {
                       const SizedBox(
                         height: 40,
                       ),
-                      textBox(
-                        "Email",
-                        txtEmail,
-                        TextInputType.emailAddress,
-                        validatorEmail,
-                        false,
-                      ),
-                      const SizedBox(
-                        height: 26,
-                      ),
-                      textBox(
-                        "Senha",
-                        txtPassword,
-                        null,
-                        validatorPassword,
-                        true,
+                      Form(
+                        key: formkey,
+                        child: Column(
+                          children: [
+                            textBox(
+                              "Email",
+                              txtEmail,
+                              TextInputType.emailAddress,
+                              validatorEmail,
+                              false,
+                              null,
+                            ),
+                            const SizedBox(
+                              height: 26,
+                            ),
+                            textBox(
+                              "Senha",
+                              txtPassword,
+                              null,
+                              validatorPassword,
+                              true,
+                              buildPasswordSuffixIcon,
+                            ),
+                          ],
+                        ),
                       ),
                       const SizedBox(
                         height: 15,

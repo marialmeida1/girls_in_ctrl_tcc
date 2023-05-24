@@ -81,6 +81,20 @@ class _TelaCadastrarState extends State<TelaCadastrar> {
     }
   }
 
+  Widget buildPasswordSuffixIcon(bool obscureText) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          obscureText = !obscureText;
+        });
+      },
+      child: Icon(
+        obscureText ? Icons.visibility_off : Icons.visibility,
+        color: Colors.grey,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,78 +179,65 @@ class _TelaCadastrarState extends State<TelaCadastrar> {
                   ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(40),
-                  child: Column(
-                    children: [
-                      textBox(
-                        "Nome",
-                        nameController,
-                        null,
-                        validatorName,
-                        false,
+                    padding: const EdgeInsets.all(40),
+                    child: Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          textBox("Nome", nameController, null, validatorName,
+                              false, null),
+                          const SizedBox(
+                            height: 26,
+                          ),
+                          textBox("Último Nome", lastnameController, null,
+                              validatorLastName, false, null),
+                          const SizedBox(
+                            height: 26,
+                          ),
+                          textBox(
+                              "Email",
+                              emailController,
+                              TextInputType.emailAddress,
+                              validatorEmail,
+                              false,
+                              null),
+                          const SizedBox(
+                            height: 26,
+                          ),
+                          textBox("Senha", passwordController, null,
+                              validatorName, true, buildPasswordSuffixIcon),
+                          const SizedBox(
+                            height: 26,
+                          ),
+                          textBox(
+                              "Confirmação Senha",
+                              passwordConfirmController,
+                              null,
+                              validatorName,
+                              true,
+                              buildPasswordSuffixIcon),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          loading
+                              ? Center(
+                                  child: CircularProgressIndicator(),
+                                )
+                              : bottonPadrao(
+                                  50,
+                                  double.infinity,
+                                  Colors.black,
+                                  Colors.white,
+                                  "Cadastrar",
+                                  context,
+                                  _button,
+                                ),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 26,
-                      ),
-                      textBox(
-                        "Último Nome",
-                        lastnameController,
-                        null,
-                        validatorLastName,
-                        false,
-                      ),
-                      const SizedBox(
-                        height: 26,
-                      ),
-                      textBox(
-                        "Email",
-                        emailController,
-                        TextInputType.emailAddress,
-                        validatorEmail,
-                        false,
-                      ),
-                      const SizedBox(
-                        height: 26,
-                      ),
-                      textBox(
-                        "Senha",
-                        passwordController,
-                        null,
-                        validatorName,
-                        true,
-                      ),
-                      const SizedBox(
-                        height: 26,
-                      ),
-                      textBox(
-                        "Confirmação Senha",
-                        passwordConfirmController,
-                        null,
-                        validatorName,
-                        true,
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      loading
-                          ? Center(
-                              child: CircularProgressIndicator(),
-                            )
-                          : bottonPadrao(
-                              50,
-                              double.infinity,
-                              Colors.black,
-                              Colors.white,
-                              "Cadastrar",
-                              context,
-                              _button,
-                            ),
-                    ],
-                  ),
-                ),
+                    )),
               ),
             )
           ],

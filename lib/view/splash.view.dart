@@ -56,7 +56,11 @@ class _LoadingState extends State<Loading> {
     return Container(
       height: MediaQuery.of(context).size.height,
       color: Color(0xffa17bff),
-      child: Center(child: CircularProgressIndicator()),
+      child: Center(
+        child: CircularProgressIndicator(
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

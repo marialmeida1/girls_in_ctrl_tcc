@@ -8,29 +8,33 @@ Widget textBox(
   TextInputType? type,
   Validator validator,
   bool obscure,
+  ValueChanged<bool>? onTap,
 ) {
-  return Container(
-    alignment: Alignment.centerRight,
-    height: 46,
-    width: double.infinity,
-    decoration: const BoxDecoration(
-      color: Colors.black12,
-      borderRadius: BorderRadius.all(
-        Radius.circular(20),
+  var onTap;
+  return TextFormField(
+    keyboardType: type,
+    controller: txt,
+    validator: validator,
+    obscureText: obscure,
+    decoration: InputDecoration(
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(26),
+          borderSide: BorderSide(
+            width: 0,
+            color: Colors.black12,
+          )),
+      filled: true,
+      fillColor: Colors.black12,
+      hintText: name,
+      errorStyle: TextStyle(
+        height: 0.8, // Ajuste a altura do texto de erro conforme necessário
       ),
+      contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      suffixIcon: onTap,
     ),
-    child: Padding(
-      padding: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-      child: TextFormField(
-        keyboardType: type,
-        controller: txt,
-        validator: validator,
-        obscureText: obscure,
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: name,
-        ),
-      ),
-    ),
+    textAlignVertical: TextAlignVertical.center,
+    textAlign: TextAlign.left,
+    maxLines: 1,
+    autovalidateMode: AutovalidateMode.onUserInteraction,
   );
 }
