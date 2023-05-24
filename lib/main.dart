@@ -8,7 +8,7 @@ void main() {
     MaterialApp(
       title: "Hello",
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(myApp: OptionScreem()),
+      home: const Loading(),
       theme: lightTheme,
     ),
   );

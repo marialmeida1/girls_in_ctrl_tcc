@@ -1,7 +1,7 @@
 // Constantes
 
 // pega a base url do projeto em API
-const baseURL = 'http://192.168.92.61:8000/api';
+const baseURL = 'http://http://girls-in-crtl.domcloud.io/api';
 const loginURL = baseURL + '/login';
 const registerURL = baseURL + '/register';
 const logoutURl = baseURL + '/logout';

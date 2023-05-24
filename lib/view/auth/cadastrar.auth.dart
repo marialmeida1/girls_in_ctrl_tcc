@@ -1,10 +1,85 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tcc_girls_in_ctrl/controllers/services.controllers.dart';
+import 'package:tcc_girls_in_ctrl/models/response.models.dart';
+import 'package:tcc_girls_in_ctrl/models/user.models.dart';
 import 'package:tcc_girls_in_ctrl/view/auth/entrar.auth.dart';
+import 'package:tcc_girls_in_ctrl/view/main/home/principal.home.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/text.widgets.dart';
 
-class TelaCadastrar extends StatelessWidget {
+class TelaCadastrar extends StatefulWidget {
   const TelaCadastrar({super.key});
+
+  @override
+  State<TelaCadastrar> createState() => _TelaCadastrarState();
+}
+
+class _TelaCadastrarState extends State<TelaCadastrar> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool loading = false;
+  TextEditingController nameController = TextEditingController(),
+      lastnameController = TextEditingController(),
+      emailController = TextEditingController(),
+      passwordController = TextEditingController(),
+      passwordConfirmController = TextEditingController();
+
+  // Validação de registros
+  void _registerUser() async {
+    // Pega valores inseridos e envia para a função register
+    ApiResponse response = await register(
+      nameController.text,
+      lastnameController.text,
+      emailController.text,
+      passwordController.text,
+    );
+
+    // Salva ou não valores temporários
+    if (response.error == null) {
+      _saveAndRedirect(response.data as User);
+    } else {
+      setState(() {
+        loading = !loading;
+      });
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('${response.error}')));
+    }
+  }
+
+  // Salva o id e token temporariamente
+  void _saveAndRedirect(User user) async {
+    // Pega os valores do usuário temposáriamente
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    // Salva os valores de id e token
+    await pref.setString('token', user.token ?? '');
+    await pref.setInt('userId', user.id ?? 0);
+
+    // Remove rotas anteriores e envia para a nova página
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => Principal()), (route) => false);
+  }
+
+  String? Function(String?) validatorName =
+      (val) => val!.isEmpty ? 'Nome inválido' : null;
+
+  String? Function(String?) validatorLastName =
+      (val) => val!.isEmpty ? 'Nome inválido' : null;
+
+  String? Function(String?) validatorEmail =
+      (val) => val!.isEmpty ? 'Email inválido' : null;
+
+  String? Function(String?) validatorPassword =
+      (val) => val!.length < 6 ? 'Requer 6 caractéres' : null;
+
+  void _button() {
+    if (formKey.currentState!.validate()) {
+      setState(() {
+        loading = true;
+        _registerUser();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,37 +168,72 @@ class TelaCadastrar extends StatelessWidget {
                   padding: const EdgeInsets.all(40),
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: 40,
+                      textBox(
+                        "Nome",
+                        nameController,
+                        null,
+                        validatorName,
+                        false,
                       ),
-                      textBox("Nome Completo"),
-                      const SizedBox(
-                        height: 26,
-                      ),
-                      textBox("Email"),
-                      const SizedBox(
-                        height: 26,
-                      ),
-                      textBox("Senha"),
                       const SizedBox(
                         height: 26,
                       ),
-                      textBox("Confirmar Senha"),
+                      textBox(
+                        "Último Nome",
+                        lastnameController,
+                        null,
+                        validatorLastName,
+                        false,
+                      ),
+                      const SizedBox(
+                        height: 26,
+                      ),
+                      textBox(
+                        "Email",
+                        emailController,
+                        TextInputType.emailAddress,
+                        validatorEmail,
+                        false,
+                      ),
+                      const SizedBox(
+                        height: 26,
+                      ),
+                      textBox(
+                        "Senha",
+                        passwordController,
+                        null,
+                        validatorName,
+                        true,
+                      ),
+                      const SizedBox(
+                        height: 26,
+                      ),
+                      textBox(
+                        "Confirmação Senha",
+                        passwordConfirmController,
+                        null,
+                        validatorName,
+                        true,
+                      ),
                       const SizedBox(
                         height: 15,
                       ),
                       const SizedBox(
-                        height: 50,
+                        height: 30,
                       ),
-                      bottonPadrao(
-                        50,
-                        double.infinity,
-                        Colors.black,
-                        Colors.white,
-                        "Cadastrar",
-                        context,
-                        null,
-                      ),
+                      loading
+                          ? Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : bottonPadrao(
+                              50,
+                              double.infinity,
+                              Colors.black,
+                              Colors.white,
+                              "Cadastrar",
+                              context,
+                              _button,
+                            ),
                     ],
                   ),
                 ),

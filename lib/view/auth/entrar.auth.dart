@@ -1,11 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tcc_girls_in_ctrl/models/response.models.dart';
+import 'package:tcc_girls_in_ctrl/models/user.models.dart';
 import 'package:tcc_girls_in_ctrl/view/auth/cadastrar.auth.dart';
+import 'package:tcc_girls_in_ctrl/view/main/home/principal.home.dart';
 import 'package:tcc_girls_in_ctrl/view/main/menu/principal.menu.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/text.widgets.dart';
 
-class TelaEntrar extends StatelessWidget {
+import '../../controllers/services.controllers.dart';
+
+class TelaEntrar extends StatefulWidget {
   const TelaEntrar({super.key});
+
+  @override
+  State<TelaEntrar> createState() => _TelaEntrarState();
+}
+
+class _TelaEntrarState extends State<TelaEntrar> {
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  TextEditingController txtEmail = TextEditingController();
+  TextEditingController txtPassword = TextEditingController();
+  bool loading = false;
+
+  // Responsável por verificar o login
+  void _loginUser() async {
+    // Conecta com a função "login" em "services" e pega um resposta do que é enviado
+    ApiResponse response = await login(txtEmail.text, txtPassword.text);
+
+    // Se não há erros manda para salvar token
+    if (response.error == null) {
+      // Envia informação para a função
+      _saveAndRedirect(response.data as User);
+    }
+    // Se der erro para o loading e coloca um resposta como erro
+    else {
+      setState(() {
+        loading = false;
+      });
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('${response.error}')));
+    }
+  }
+
+  // Salva informações temporárias (id e token)
+  void _saveAndRedirect(User user) async {
+    // Guarda as informações temporáriamente
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    // Salva no "SharedPrederences" o id e o token do usuário
+    await pref.setString('token', user.token ?? '');
+    await pref.setInt('userId', user.id ?? 0);
+
+    // Envia para uma nova rota e exclui as rotas anteriores usadas, como login e registro, impedindo do usuário voltar
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => Principal()), (route) => false);
+  }
+
+  String? Function(String?) validatorEmail =
+      (val) => val!.isEmpty ? 'Email inválido' : null;
+
+  String? Function(String?) validatorPassword =
+      (val) => val!.length < 6 ? 'Requer 6 caractéres' : null;
+
+  void _button() {
+    if (formkey.currentState!.validate()) {
+      setState(() {
+        loading = true;
+        _loginUser();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,11 +162,23 @@ class TelaEntrar extends StatelessWidget {
                       const SizedBox(
                         height: 40,
                       ),
-                      textBox("Email"),
+                      textBox(
+                        "Email",
+                        txtEmail,
+                        TextInputType.emailAddress,
+                        validatorEmail,
+                        false,
+                      ),
                       const SizedBox(
                         height: 26,
                       ),
-                      textBox("Senha"),
+                      textBox(
+                        "Senha",
+                        txtPassword,
+                        null,
+                        validatorPassword,
+                        true,
+                      ),
                       const SizedBox(
                         height: 15,
                       ),
@@ -121,15 +198,19 @@ class TelaEntrar extends StatelessWidget {
                       const SizedBox(
                         height: 30,
                       ),
-                      bottonPadrao(
-                        50,
-                        double.infinity,
-                        Colors.black,
-                        Colors.white,
-                        "Entrar",
-                        context,
-                        PrincipalMenu(),
-                      ),
+                      loading
+                          ? Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : bottonPadrao(
+                              50,
+                              double.infinity,
+                              Colors.black,
+                              Colors.white,
+                              "Entrar",
+                              context,
+                              _button,
+                            ),
                     ],
                   ),
                 ),

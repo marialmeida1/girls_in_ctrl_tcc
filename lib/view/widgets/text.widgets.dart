@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
-Widget textBox(String name) {
+typedef Validator = String? Function(String? value);
+
+Widget textBox(
+  String name,
+  TextEditingController txt,
+  TextInputType? type,
+  Validator validator,
+  bool obscure,
+) {
   return Container(
     alignment: Alignment.centerRight,
     height: 46,
@@ -13,7 +21,11 @@ Widget textBox(String name) {
     ),
     child: Padding(
       padding: EdgeInsets.only(right: 20, left: 20, top: 10, bottom: 10),
-      child: TextField(
+      child: TextFormField(
+        keyboardType: type,
+        controller: txt,
+        validator: validator,
+        obscureText: obscure,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: name,

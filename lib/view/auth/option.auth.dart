@@ -35,6 +35,15 @@ Widget LogoTop() {
   );
 }
 
+void _button(context, Widget pagina) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => pagina,
+    ),
+  );
+}
+
 Widget Option(BuildContext context) {
   return Container(
     height: MediaQuery.of(context).size.height * 0.6,
@@ -110,7 +119,7 @@ Widget Bottons(BuildContext context) {
               Colors.black,
               "Entrar",
               context,
-              const TelaEntrar(),
+              () => _button(context, TelaEntrar()),
             ),
           ),
         ),
@@ -126,7 +135,7 @@ Widget Bottons(BuildContext context) {
               Colors.white,
               "Cadastrar",
               context,
-              const TelaCadastrar(),
+              () => _button(context, TelaCadastrar()),
             ),
           ),
         )

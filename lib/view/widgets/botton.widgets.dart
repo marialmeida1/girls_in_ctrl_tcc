@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+typedef TapCallback = void Function();
+
 Widget bottonPadrao(
   double altura,
   double? largura,
@@ -7,17 +9,10 @@ Widget bottonPadrao(
   Color colorBotton,
   String texto,
   BuildContext context,
-  Widget? pagina,
+  TapCallback? onTap,
 ) {
   return GestureDetector(
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => pagina ?? const SizedBox(),
-        ),
-      );
-    },
+    onTap: onTap,
     child: Container(
       alignment: Alignment.center,
       height: altura,
