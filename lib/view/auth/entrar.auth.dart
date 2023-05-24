@@ -55,7 +55,8 @@ class _TelaEntrarState extends State<TelaEntrar> {
 
     // Envia para uma nova rota e exclui as rotas anteriores usadas, como login e registro, impedindo do usuário voltar
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => Principal()), (route) => false);
+        MaterialPageRoute(builder: (context) => PrincipalMenu()),
+        (route) => false);
   }
 
   String? Function(String?) validatorEmail =

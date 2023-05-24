@@ -5,6 +5,7 @@ import 'package:tcc_girls_in_ctrl/models/response.models.dart';
 import 'package:tcc_girls_in_ctrl/models/user.models.dart';
 import 'package:tcc_girls_in_ctrl/view/auth/entrar.auth.dart';
 import 'package:tcc_girls_in_ctrl/view/main/home/principal.home.dart';
+import 'package:tcc_girls_in_ctrl/view/main/menu/principal.menu.dart';
 import 'package:tcc_girls_in_ctrl/view/themes/light.theme.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/text.widgets.dart';
@@ -58,7 +59,8 @@ class _TelaCadastrarState extends State<TelaCadastrar> {
 
     // Remove rotas anteriores e envia para a nova página
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => Principal()), (route) => false);
+        MaterialPageRoute(builder: (context) => PrincipalMenu()),
+        (route) => false);
   }
 
   String? Function(String?) validatorName =

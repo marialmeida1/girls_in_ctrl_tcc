@@ -13,6 +13,7 @@ class PrincipalNoticias extends StatelessWidget {
         Colors.black,
         "Notícias",
         "Tudo sobre o mundo da tecnologia!",
+        null,
       ),
       body: Padding(
         padding: const EdgeInsets.only(

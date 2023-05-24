@@ -5,6 +5,7 @@ import 'package:tcc_girls_in_ctrl/models/response.models.dart';
 import 'package:tcc_girls_in_ctrl/view/auth/entrar.auth.dart';
 import 'package:tcc_girls_in_ctrl/view/auth/option.auth.dart';
 import 'package:tcc_girls_in_ctrl/view/main/home/principal.home.dart';
+import 'package:tcc_girls_in_ctrl/view/main/menu/principal.menu.dart';
 
 import '../controllers/gets.controllers.dart';
 
@@ -29,7 +30,7 @@ class _LoadingState extends State<Loading> {
       if (response.error == null) {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(
-              builder: (context) => Principal(),
+              builder: (context) => PrincipalMenu(),
             ),
             (route) => false);
       } else if (response.error == unauthorized) {

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 AppBar myappBar(
-    BuildContext context, Color color, String? title, String? subtitle) {
+  BuildContext context,
+  Color color,
+  String? title,
+  String? subtitle,
+  IconData? icon,
+) {
   return AppBar(
     elevation: 0,
     toolbarHeight: 80,
@@ -10,24 +15,42 @@ AppBar myappBar(
       width: double.infinity,
       alignment: Alignment.centerLeft,
       child: InkWell(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              title ?? '',
-              style: Theme.of(context).textTheme.headline2?.copyWith(
-                    color: Colors.black,
-                  ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title ?? '',
+                  style: Theme.of(context).textTheme.headline2?.copyWith(
+                        color: Colors.black,
+                      ),
+                ),
+                const SizedBox(
+                  height: 6,
+                ),
+                Text(
+                  subtitle ?? '',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Colors.black,
+                      ),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 6,
-            ),
-            Text(
-              subtitle ?? '',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Colors.black,
-                  ),
-            ),
+            GestureDetector(
+              child: Container(
+                height: 40,
+                width: 40,
+                color: Colors.blue,
+                child: Icon(
+                  icon,
+                  size: 25,
+                  color: Colors.black,
+                ),
+              ),
+              onTap: () {},
+            )
           ],
         ),
       ),

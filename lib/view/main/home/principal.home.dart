@@ -19,6 +19,7 @@ class _PrincipalState extends State<Principal> {
         Colors.white,
         null,
         null,
+        null,
       ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,

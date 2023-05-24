@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 typedef Validator = String? Function(String? value);
 
 Widget textBox(
-  String name,
+  String? name,
   TextEditingController txt,
   TextInputType? type,
   Validator validator,

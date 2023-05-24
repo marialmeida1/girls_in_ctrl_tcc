@@ -115,7 +115,7 @@ Future<ApiResponse> getUserDetail() async {
 }
 
 // ------ Update ------
-Future<ApiResponse> update(String name, String? image) async {
+Future<ApiResponse> update(String name, String lastname, String? image) async {
   ApiResponse apiResponse = ApiResponse();
 
   try {
@@ -133,7 +133,7 @@ Future<ApiResponse> update(String name, String? image) async {
             ? {
                 'name': name,
               }
-            : {'name': name, 'image': image});
+            : {'name': name, 'lastname': lastname, 'image': image});
 
     // isso fica armazenado em "response" e é verificado so agora
     switch (response.statusCode) {
