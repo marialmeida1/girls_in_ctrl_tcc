@@ -5,6 +5,7 @@ import 'package:tcc_girls_in_ctrl/models/user.models.dart';
 import 'package:tcc_girls_in_ctrl/view/auth/cadastrar.auth.dart';
 import 'package:tcc_girls_in_ctrl/view/main/home/principal.home.dart';
 import 'package:tcc_girls_in_ctrl/view/main/menu/principal.menu.dart';
+import 'package:tcc_girls_in_ctrl/view/themes/light.theme.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/botton.widgets.dart';
 import 'package:tcc_girls_in_ctrl/view/widgets/text.widgets.dart';
 
@@ -72,24 +73,11 @@ class _TelaEntrarState extends State<TelaEntrar> {
     }
   }
 
-  Widget buildPasswordSuffixIcon(bool obscureText) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          obscureText = !obscureText;
-        });
-      },
-      child: Icon(
-        obscureText ? Icons.visibility_off : Icons.visibility,
-        color: Colors.grey,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    // Size
+
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
@@ -120,127 +108,134 @@ class _TelaEntrarState extends State<TelaEntrar> {
           ),
         ),
       ),
-      body: Container(
-        color: Theme.of(context).colorScheme.primary,
-        alignment: Alignment.topCenter,
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(
-                left: 30,
-                right: 30,
-                top: 30,
-              ),
-              height: 150,
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Entrar",
-                    style: Theme.of(context).textTheme.headline1?.copyWith(
-                          color: Colors.black,
-                        ),
-                  ),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  Text(
-                    "Olá Girl, que bom ter você aqui!",
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                          color: Colors.black,
-                        ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(50),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.8),
-                      spreadRadius: 4,
-                      blurRadius: 5,
-                      offset: Offset(0, 3),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Theme.of(context).colorScheme.primary,
+          alignment: Alignment.topCenter,
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  right: 30,
+                  top: 30,
+                ),
+                height: size(context, 0.2),
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Entrar",
+                      style: Theme.of(context).textTheme.headline1?.copyWith(
+                            color: Colors.black,
+                          ),
+                    ),
+                    const SizedBox(
+                      height: 14,
+                    ),
+                    Text(
+                      "Olá Girl, que bom ter você aqui!",
+                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Colors.black,
+                          ),
                     ),
                   ],
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(40),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 40,
+              ),
+              Container(
+                child: Column(
+                  children: [
+                    Container(
+                      height: size(context, 0.8),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.8),
+                            spreadRadius: 4,
+                            blurRadius: 5,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
                       ),
-                      Form(
-                        key: formkey,
+                      child: Padding(
+                        padding: const EdgeInsets.all(40),
                         child: Column(
                           children: [
-                            textBox(
-                              "Email",
-                              txtEmail,
-                              TextInputType.emailAddress,
-                              validatorEmail,
-                              false,
-                              null,
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            Form(
+                              key: formkey,
+                              child: Column(
+                                children: [
+                                  textBox(
+                                    "Email",
+                                    txtEmail,
+                                    TextInputType.emailAddress,
+                                    validatorEmail,
+                                    false,
+                                  ),
+                                  const SizedBox(
+                                    height: 26,
+                                  ),
+                                  textBox(
+                                    "Senha",
+                                    txtPassword,
+                                    null,
+                                    validatorPassword,
+                                    true,
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(
-                              height: 26,
+                              height: 15,
                             ),
-                            textBox(
-                              "Senha",
-                              txtPassword,
-                              null,
-                              validatorPassword,
-                              true,
-                              buildPasswordSuffixIcon,
+                            Container(
+                              height: 20,
+                              width: double.infinity,
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                "Esqueceu sua senha?",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.copyWith(
+                                      color: Colors.black,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                              ),
                             ),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            loading
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : bottonPadrao(
+                                    50,
+                                    double.infinity,
+                                    Colors.black,
+                                    Colors.white,
+                                    "Entrar",
+                                    context,
+                                    _button,
+                                  ),
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        height: 20,
-                        width: double.infinity,
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          "Esqueceu sua senha?",
-                          style:
-                              Theme.of(context).textTheme.bodyText2?.copyWith(
-                                    color: Colors.black,
-                                    decoration: TextDecoration.underline,
-                                  ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      loading
-                          ? Center(
-                              child: CircularProgressIndicator(),
-                            )
-                          : bottonPadrao(
-                              50,
-                              double.infinity,
-                              Colors.black,
-                              Colors.white,
-                              "Entrar",
-                              context,
-                              _button,
-                            ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

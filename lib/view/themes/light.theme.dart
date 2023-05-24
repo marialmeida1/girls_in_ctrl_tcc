@@ -40,3 +40,9 @@ final lightTheme = ThemeData(
         fontWeight: FontWeight.w500,
       )),
 );
+
+double size(BuildContext context, double valor) {
+  final Size screenSize = MediaQuery.of(context).size;
+  final double screenHeight = screenSize.height;
+  return screenHeight * valor;
+}

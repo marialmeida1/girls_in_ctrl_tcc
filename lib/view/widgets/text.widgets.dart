@@ -8,9 +8,7 @@ Widget textBox(
   TextInputType? type,
   Validator validator,
   bool obscure,
-  ValueChanged<bool>? onTap,
 ) {
-  var onTap;
   return TextFormField(
     keyboardType: type,
     controller: txt,
@@ -30,7 +28,6 @@ Widget textBox(
         height: 0.8, // Ajuste a altura do texto de erro conforme necessário
       ),
       contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      suffixIcon: onTap,
     ),
     textAlignVertical: TextAlignVertical.center,
     textAlign: TextAlign.left,
