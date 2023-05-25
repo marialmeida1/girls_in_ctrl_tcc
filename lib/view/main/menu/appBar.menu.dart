@@ -6,6 +6,7 @@ AppBar myappBar(
   String? title,
   String? subtitle,
   IconData? icon,
+  Function()? function,
 ) {
   return AppBar(
     elevation: 0,
@@ -42,14 +43,15 @@ AppBar myappBar(
               child: Container(
                 height: 40,
                 width: 40,
-                color: Colors.blue,
                 child: Icon(
                   icon,
                   size: 25,
                   color: Colors.black,
                 ),
               ),
-              onTap: () {},
+              onTap: () {
+                function!();
+              },
             )
           ],
         ),

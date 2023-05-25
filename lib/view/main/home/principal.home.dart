@@ -20,6 +20,7 @@ class _PrincipalState extends State<Principal> {
         null,
         null,
         null,
+        null,
       ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,

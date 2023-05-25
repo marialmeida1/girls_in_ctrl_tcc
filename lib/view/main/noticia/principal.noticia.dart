@@ -14,6 +14,7 @@ class PrincipalNoticias extends StatelessWidget {
         "Notícias",
         "Tudo sobre o mundo da tecnologia!",
         null,
+        null,
       ),
       body: Padding(
         padding: const EdgeInsets.only(

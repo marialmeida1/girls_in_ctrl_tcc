@@ -98,6 +98,35 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
     super.initState();
   }
 
+  void logoutProfile() async {
+    ApiResponse response = await logoutUser();
+    setState(() {
+      loading = false;
+    });
+    if (response.error == null) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('${response.data}')));
+      logoutPage();
+    } else if (response.error == unauthorized) {
+      logout().then((value) => {
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => OptionScreem()),
+                (route) => false)
+          });
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('${response.error}')));
+    }
+  }
+
+  void logoutPage() {
+    logout().then((value) => {
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => OptionScreem()),
+              (route) => false)
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,6 +136,7 @@ class _PrincipalProfileState extends State<PrincipalProfile> {
         "Perfil",
         "Informações sobre o usuário!",
         Icons.logout_outlined,
+        logoutProfile,
       ),
       body: loading
           ? const Center(
