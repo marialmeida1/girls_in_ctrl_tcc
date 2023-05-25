@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tcc_girls_in_ctrl/view/main/home/principal.home.dart';
+import 'package:tcc_girls_in_ctrl/view/main/iniciativas/principal.iniciativas.dart';
 import 'package:tcc_girls_in_ctrl/view/main/noticia/principal.noticia.dart';
 import 'package:tcc_girls_in_ctrl/view/main/profile/principal.profile.dart';
 
@@ -11,6 +12,7 @@ class TabsPage extends StatelessWidget {
         children: [
           Principal(),
           const PrincipalNoticias(),
+          const PrincipalIniciativas(),
           const PrincipalProfile()
         ],
       ),
@@ -20,7 +22,10 @@ class TabsPage extends StatelessWidget {
             icon: Icon(Icons.home_outlined),
           ),
           Tab(
-            icon: Icon(Icons.work_outline),
+            icon: Icon(Icons.newspaper_outlined),
+          ),
+          Tab(
+            icon: Icon(Icons.lightbulb_outlined),
           ),
           Tab(
             icon: Icon(Icons.person_outline),

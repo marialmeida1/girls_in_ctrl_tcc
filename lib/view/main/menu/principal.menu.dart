@@ -11,7 +11,7 @@ class PrincipalMenu extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       home: DefaultTabController(
-        length: 3,
+        length: 4,
         child: TabsPage(),
       ),
     );
