@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tcc_girls_in_ctrl/constants.dart';
 import 'package:tcc_girls_in_ctrl/controllers/gets.controllers.dart';
+import 'package:tcc_girls_in_ctrl/models/initiative.models.dart';
 import 'package:tcc_girls_in_ctrl/models/response.models.dart';
 import "package:http/http.dart" as http;
 import 'package:tcc_girls_in_ctrl/models/user.models.dart';
@@ -129,11 +130,13 @@ Future<ApiResponse> update(String name, String lastname, String? image) async {
         // há duas abordagens, caso tenha o recebimento de imagem ou não
         // se NÃO tem, irá executar somente o nome
         // se tem irá executar o nome e a imagem
-        body: image == null
-            ? {
-                'name': name,
-              }
-            : {'name': name, 'lastname': lastname, 'image': image});
+        body: {
+          'name': name,
+          if (lastname != null) 'lastname': lastname,
+          if (image != null) 'image': image,
+        }..removeWhere((key, value) => value == null));
+
+    print(response.statusCode);
 
     // isso fica armazenado em "response" e é verificado so agora
     switch (response.statusCode) {
@@ -191,4 +194,75 @@ Future<ApiResponse> logoutUser() async {
     apiResponse.error = serverError;
   }
   return apiResponse;
+}
+
+// Initiatives
+Future<ApiResponse> initiative(String card, String name, String link) async {
+  ApiResponse apiResponse = ApiResponse();
+
+  try {
+    // Verificar se o card já existe no banco de dados
+    final response = await http.get(
+        Uri.parse('http://girls-in-crtl.domcloud.io/api/initiative/$card'));
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      // Card já existe, então atualizar as variáveis link e nome
+      final initiativeData = jsonDecode(response.body);
+
+      // Fazer uma solicitação PUT para atualizar as variáveis link e nome
+      final updateResponse = await http.put(
+          Uri.parse('http://girls-in-crtl.domcloud.io/api/initiative/$card'),
+          body: {
+            'name': name,
+            'link': link,
+          });
+
+      if (updateResponse.statusCode == 200) {
+        // Atualização bem-sucedida
+        apiResponse.data = Initiative.fromJson(jsonDecode(updateResponse.body));
+      } else {
+        // Lidar com erros na atualização
+        apiResponse.error = 'Erro ao atualizar iniciativa';
+      }
+    } else if (response.statusCode == 404) {
+      // Card não existe, então adicionar ao banco de dados
+      final addResponse = await http.post(
+          Uri.parse('http://girls-in-crtl.domcloud.io/api/initiative'),
+          body: {
+            'card': card,
+            'name': name,
+            'link': link,
+          });
+
+      if (addResponse.statusCode == 200) {
+        // Adição bem-sucedida
+        apiResponse.data = Initiative.fromJson(jsonDecode(addResponse.body));
+      } else {
+        // Lidar com erros na adição
+        apiResponse.error = 'Erro ao adicionar iniciativa';
+      }
+    } else {
+      // Lidar com outros códigos de status de erro
+      apiResponse.error = 'Erro na solicitação: ${response.statusCode}';
+    }
+  } catch (e) {
+    // Lidar com erros de conexão
+    apiResponse.error = 'Erro de conexão';
+  }
+
+  return apiResponse;
+}
+
+// Search Iniciativas
+Future<List<Map<String, dynamic>>> searchIniciativas(String name) async {
+  final response = await http.get(Uri.parse(
+      'http://girls-in-crtl.domcloud.io/api/initiative/search?name=$name'));
+
+  if (response.statusCode == 200) {
+    final data = json.decode(response.body) as List<dynamic>;
+    return data.map((item) => item as Map<String, dynamic>).toList();
+  } else {
+    throw Exception('Falha ao buscar as iniciativas');
+  }
 }

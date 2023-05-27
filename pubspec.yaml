@@ -66,13 +66,45 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - lib/assets/womanLogin.jpg
-    - lib/assets/fundoSplash.jpg
     - lib/assets/logoSplash.png
     - lib/assets/carrossel1.jpg
     - lib/assets/carrossel2.jpg
     - lib/assets/carrossel3.jpg
     - lib/assets/fundo.jpg
+    - lib/assets/bitgirls.png
+    - lib/assets/cintia.png
+    - lib/assets/coderosa.jpg
+    - lib/assets/computersciencegirls.png
+    - lib/assets/cunhantãdigital.png
+    - lib/assets/devgirls.png
+    - lib/assets/djangogirls.png
+    - lib/assets/eimana.jpg
+    - lib/assets/elas@computação.png
+    - lib/assets/elasdigitais.png
+    - lib/assets/elas++.png
+    - lib/assets/emili@s.png
+    - lib/assets/gamt.png
+    - lib/assets/gatech.jpg
+    - lib/assets/gecet.jpg
+    - lib/assets/girls_in.png
+    - lib/assets/girls'ncode.png
+    - lib/assets/girlswhocode.png
+    - lib/assets/grace.png
+    - lib/assets/igualdadestem.png
+    - lib/assets/includegurias.png
+    - lib/assets/includemeninasuff.png
+    - lib/assets/infogirl.png
+    - lib/assets/itgirls.jpg
+    - lib/assets/meninasdigitais.png
+    - lib/assets/minasprogramam.jpg
+    - lib/assets/mulherespositivaslogo.jpg
+    - lib/assets/programaria.png
+    - lib/assets/pyladies.png
+    - lib/assets/railsgirls.jpg
+    - lib/assets/reprograma.png
+    - lib/assets/techladies.jpg
+    - lib/assets/womakerscode.jpg
+    - lib/assets/weventures.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
