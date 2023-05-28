@@ -6,8 +6,6 @@ const loginURL = baseURL + '/login';
 const registerURL = baseURL + '/register';
 const logoutURl = baseURL + '/logout';
 const userURL = baseURL + '/user';
-const initiativeURL = baseURL + '/initiative';
-const searchIniURL = baseURL + '/initiatives/search';
 
 // Errors
 

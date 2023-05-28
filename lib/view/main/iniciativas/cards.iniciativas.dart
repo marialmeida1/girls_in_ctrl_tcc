@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:tcc_girls_in_ctrl/controllers/services.controllers.dart';
 import 'package:tcc_girls_in_ctrl/models/initiative.models.dart';
 import 'package:tcc_girls_in_ctrl/models/response.models.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CardsIniciativas extends StatelessWidget {
   final String card;
@@ -36,6 +37,13 @@ class CardsIniciativas extends StatelessWidget {
     }
   }
 
+  Future<void> _launchUrl(link) async {
+    final url = Uri.parse(link);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     registerInitiative(card, name, link);
@@ -50,38 +58,42 @@ class CardsIniciativas extends StatelessWidget {
         borderRadius:
             BorderRadius.circular(20), // Ajuste o valor do raio desejado
       ),
-      child: ListTile(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        tileColor: Colors.white,
-        contentPadding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-        onTap: () {},
-        leading: Container(
-          height: 80,
-          width: 80,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(image),
-              fit: BoxFit.cover,
+      child: GestureDetector(
+        child: ListTile(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          tileColor: Colors.white,
+          contentPadding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+          onTap: () {
+            _launchUrl(link);
+          },
+          leading: Container(
+            height: 80,
+            width: 80,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(image),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-        title: Text(
-          name,
-          style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-        ),
-        subtitle: Text(
-          subtitle,
-          style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                fontSize: 12,
-              ),
-        ),
-        trailing: Icon(
-          Icons.arrow_forward_ios_rounded,
-          color: Colors.black45,
+          title: Text(
+            name,
+            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
+          subtitle: Text(
+            subtitle,
+            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  fontSize: 12,
+                ),
+          ),
+          trailing: const Icon(
+            Icons.arrow_forward_ios_rounded,
+            color: Colors.black45,
+          ),
         ),
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget searchText() {
+Widget searchText(void Function(String)? performSearch) {
   return TextFormField(
     decoration: InputDecoration(
       contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -20,5 +20,6 @@ Widget searchText() {
       ),
       labelText: "Pesquisar",
     ),
+    onChanged: performSearch,
   );
 }

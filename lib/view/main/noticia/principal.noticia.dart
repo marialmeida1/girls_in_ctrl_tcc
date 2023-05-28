@@ -23,7 +23,7 @@ class PrincipalNoticias extends StatelessWidget {
           top: 16,
         ),
         child: Container(
-          child: searchText(),
+          child: searchText(null),
         ),
       ),
     );

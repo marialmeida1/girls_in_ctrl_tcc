@@ -253,16 +253,3 @@ Future<ApiResponse> initiative(String card, String name, String link) async {
 
   return apiResponse;
 }
-
-// Search Iniciativas
-Future<List<Map<String, dynamic>>> searchIniciativas(String name) async {
-  final response = await http.get(Uri.parse(
-      'http://girls-in-crtl.domcloud.io/api/initiative/search?name=$name'));
-
-  if (response.statusCode == 200) {
-    final data = json.decode(response.body) as List<dynamic>;
-    return data.map((item) => item as Map<String, dynamic>).toList();
-  } else {
-    throw Exception('Falha ao buscar as iniciativas');
-  }
-}
