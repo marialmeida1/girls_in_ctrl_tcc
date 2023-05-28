@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('initiatives', function (Blueprint $table) {
             $table->id();
+            $table->string('card');
             $table->string('name');
-            $table->string('path_image')->nullable();
             $table->string('link');
             $table->timestamps();
         });

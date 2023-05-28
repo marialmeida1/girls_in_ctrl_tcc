@@ -10,8 +10,8 @@ class Initiative extends Model
     use HasFactory;
 
     protected $fillable = [
+        'card',
         'name',
-        'path_image',
         'link'
     ];
 }

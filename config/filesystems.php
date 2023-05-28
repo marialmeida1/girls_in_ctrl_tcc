@@ -51,7 +51,7 @@ return [
             'visibility' => 'public',
         ],
 
-        'profiles' => [
+        'initiative' => [
             'driver' => 'local',
             'root' => storage_path('app/public/initiative'),
             'url' => env('APP_URL') . '/storage',

@@ -31,5 +31,5 @@ class Controller extends BaseController
 
         // salva a imagem no local estipulado
         return URL::to('/') . '/storage/' . $path . '/' . $filename;
-    }
+    }   
 }
