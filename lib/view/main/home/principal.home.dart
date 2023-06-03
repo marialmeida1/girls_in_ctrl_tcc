@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tcc_girls_in_ctrl/view/main/home/carrossel.home.dart';
 import 'package:tcc_girls_in_ctrl/view/main/home/info.home.dart';
+import 'package:tcc_girls_in_ctrl/view/main/home/listaInfo.home.dart';
+import 'package:tcc_girls_in_ctrl/view/main/home/noticias/cards.home.dart';
 import 'package:tcc_girls_in_ctrl/view/main/menu/appBar.menu.dart';
+import 'package:tcc_girls_in_ctrl/view/main/noticia/cards.noticia.dart';
 
 class Principal extends StatefulWidget {
   @override
@@ -36,24 +39,36 @@ class _PrincipalState extends State<Principal> {
                 "Siga nosso Instagram",
                 "Veja informações sobre a tecnologia!",
                 null,
+                listaInfo(),
+                110,
+                200,
               ),
               infoHome(
                 context,
                 "Siga nosso Linkedin",
                 "Veja novas vagas de emprego e projeto!",
                 Color.fromARGB(14, 0, 0, 0),
+                listaInfo(),
+                110,
+                200,
               ),
               infoHome(
                 context,
-                "Vagas",
-                "Ofertas de vagas na TI!",
+                "Notícias",
+                "As principais notícias sobre tecnologia!",
                 null,
+                CardsNewsHome(),
+                235,
+                315,
               ),
               infoHome(
                 context,
-                "Vagas",
-                "Ofertas de vagas na TI!",
+                "Siga nosso Linkedin",
+                "Veja novas vagas de emprego e projeto!",
                 Color.fromARGB(14, 0, 0, 0),
+                listaInfo(),
+                110,
+                200,
               ),
             ],
           ),

@@ -253,3 +253,15 @@ Future<ApiResponse> initiative(String card, String name, String link) async {
 
   return apiResponse;
 }
+
+// Noticias
+Future<List<dynamic>> fetchNoticias() async {
+  final response = await http.get(Uri.parse(newsURL));
+
+  if (response.statusCode == 200) {
+    final parsed = jsonDecode(response.body);
+    return parsed;
+  } else {
+    throw Exception('Falha ao obter as notícias do feed RSS');
+  }
+}

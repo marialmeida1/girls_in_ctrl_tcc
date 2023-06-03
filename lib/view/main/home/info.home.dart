@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tcc_girls_in_ctrl/view/main/home/listaInfo.home.dart';
 
-Widget infoHome(context, titulo, subtitulo, Color? color) {
+Widget infoHome(context, titulo, subtitulo, Color? color, Widget lista,
+    double height, double height2) {
   return Container(
     color: color,
-    height: 200,
+    height: height2,
     width: double.infinity,
     padding: const EdgeInsets.only(
       left: 32,
@@ -41,8 +42,8 @@ Widget infoHome(context, titulo, subtitulo, Color? color) {
           height: 16,
         ),
         Container(
-          height: 110,
-          child: listaInfo(),
+          height: height,
+          child: lista,
         )
       ],
     ),

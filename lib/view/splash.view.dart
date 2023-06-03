@@ -6,6 +6,7 @@ import 'package:tcc_girls_in_ctrl/view/auth/entrar.auth.dart';
 import 'package:tcc_girls_in_ctrl/view/auth/option.auth.dart';
 import 'package:tcc_girls_in_ctrl/view/main/home/principal.home.dart';
 import 'package:tcc_girls_in_ctrl/view/main/menu/principal.menu.dart';
+import 'package:tcc_girls_in_ctrl/view/themes/light.theme.dart';
 
 import '../controllers/gets.controllers.dart';
 
@@ -57,9 +58,28 @@ class _LoadingState extends State<Loading> {
     return Container(
       height: MediaQuery.of(context).size.height,
       color: Color(0xffa17bff),
-      child: Center(
-        child: CircularProgressIndicator(
-          color: Colors.white,
+      child: Expanded(
+        child: Center(
+          child: Column(
+            children: [
+              Container(
+                height: size(context, 0.8),
+                child: Center(
+                  child: Image.asset(
+                    'lib/assets/logoBranca.png',
+                    height: 40,
+                  ),
+                ),
+              ),
+              Container(
+                height: size(context, 0.2),
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
